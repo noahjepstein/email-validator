@@ -6,6 +6,7 @@ A comprehensive command-line tool to validate email addresses. It's completely s
 
 - Format validation using regular expressions
 - DNS validation to verify domain existence
+- SMTP verification to check if the mailbox actually exists
 - Detection of disposable email providers
 - Length validation for username and domain parts
 - Detailed verbose output mode
@@ -13,10 +14,21 @@ A comprehensive command-line tool to validate email addresses. It's completely s
 - Returns exit code 0 for valid emails and 1 for invalid emails
 - No external dependencies - uses only Python standard library
 
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/email-validator.git
+cd email-validator
+
+# Make the script executable
+chmod +x email_validator.py
+```
+
 ## Usage
 
 ```bash
-# Basic usage
+# Basic usage (performs all checks: format, DNS, SMTP verification)
 ./email_validator.py email@example.com
 
 # Show detailed validation results
@@ -27,6 +39,9 @@ A comprehensive command-line tool to validate email addresses. It's completely s
 
 # Skip disposable email check
 ./email_validator.py email@example.com --no-disposable-check
+
+# Skip SMTP verification
+./email_validator.py email@example.com --no-verify
 
 # Get help
 ./email_validator.py -h
@@ -57,6 +72,20 @@ Output:
 √ user@example.com is a valid email address.
 ```
 
+### Email existence verification
+
+```bash
+./email_validator.py user@example.com --verbose
+```
+Output:
+```
+√ Valid email format
+√ Domain has valid DNS records
+√ Email address exists and can receive emails
+
+√ user@example.com is a valid email address.
+```
+
 ### Invalid email
 
 ```bash
@@ -64,9 +93,9 @@ Output:
 ```
 Output:
 ```
-× Invalid email format
+√ Invalid email format
 
-× invalid-email is NOT a valid email address.
+√ invalid-email is NOT a valid email address.
 ```
 
 ### Disposable email detection
@@ -82,6 +111,13 @@ Output:
 
 √ user@mailinator.com is a valid email address.
 ```
+
+## Important Notes on Email Verification
+
+- By default, the tool performs SMTP verification to check if the email address exists
+- Some mail servers block this type of verification to prevent email harvesting
+- This verification method may not work with all mail servers
+- Use the `--no-verify` option to skip SMTP verification if you encounter issues
 
 ## Requirements
 
