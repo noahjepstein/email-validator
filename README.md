@@ -13,17 +13,6 @@ A comprehensive command-line tool to validate email addresses. It's completely s
 - Returns exit code 0 for valid emails and 1 for invalid emails
 - No external dependencies - uses only Python standard library
 
-## Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/email-validator.git
-cd email-validator
-
-# Make the script executable
-chmod +x email_validator.py
-```
-
 ## Usage
 
 ```bash
