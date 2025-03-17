@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import sys
 import re
+import argparse
 
 def is_valid_email(email):
     """
@@ -14,20 +14,21 @@ def is_valid_email(email):
     return re.match(email_regex, email) is not None
 
 def main():
-    # Check if an email address was provided as an argument
-    if len(sys.argv) != 2:
-        print("Error: Please provide exactly one email address as an argument.")
-        print("Usage: python email_validator.py email@example.com")
-        sys.exit(1)
+    # Set up argument parser
+    parser = argparse.ArgumentParser(description='Validate an email address.')
+    parser.add_argument('email', help='The email address to validate')
     
-    email = sys.argv[1]
+    # Parse arguments
+    args = parser.parse_args()
+    
+    email = args.email
     
     if is_valid_email(email):
         print(f"✓ {email} is a valid email address.")
-        sys.exit(0)
+        return 0
     else:
         print(f"✗ {email} is NOT a valid email address.")
-        sys.exit(1)
+        return 1
 
 if __name__ == "__main__":
-    main()
+    exit(main())

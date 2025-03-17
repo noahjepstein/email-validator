@@ -8,6 +8,11 @@ A simple command-line tool to validate email addresses.
 python email_validator.py email@example.com
 ```
 
+You can also get help information:
+```bash
+python email_validator.py -h
+```
+
 ## Examples
 
 Valid email:
@@ -26,8 +31,9 @@ Output: `✗ invalid-email is NOT a valid email address.`
 
 - Validates email addresses against a standard pattern
 - Returns exit code 0 for valid emails and 1 for invalid emails
-- Simple command-line interface
+- Command-line interface using argparse for better usability
+- Simple help documentation with `-h` flag
 
 ## Requirements
 
-- Python 3.x (no additional packages required)
+- Python 3.x (no additional packages required, argparse is included in the standard library)
