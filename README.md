@@ -1,6 +1,6 @@
 # Email Validator
 
-A comprehensive command-line tool to validate email addresses. It's completely self-contained with no external dependencies.
+A command-line tool to validate email addresses. Only dependencies are python3 and uv.
 
 ## Features
 
@@ -12,7 +12,6 @@ A comprehensive command-line tool to validate email addresses. It's completely s
 - Detailed verbose output mode
 - Configurable validation options
 - Returns exit code 0 for valid emails and 1 for invalid emails
-- No external dependencies - uses only Python standard library
 
 ## Installation
 
@@ -112,7 +111,7 @@ Output:
 √ user@mailinator.com is a valid email address.
 ```
 
-## Important Notes on Email Verification
+## Notes on Email Verification
 
 - By default, the tool performs SMTP verification to check if the email address exists
 - Some mail servers block this type of verification to prevent email harvesting
